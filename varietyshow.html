@@ -1,0 +1,561 @@
+<html>
+<head>
+    <link rel="icon" href="iconlogo1.jpg" type="image/gif" size="16x16">
+    <title>Our Content</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        ul li {
+            display: inline-block;
+            position: relative;
+        }
+
+        ul li a {
+            display: block;
+            padding: 20px 25px;
+            color: #1b1816;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+
+        ul li a:hover {
+            color: white;  
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        ul li ul.dropdown {
+            width: 100%;  
+            background: #333;  
+            position: absolute;
+            display: none;
+            left: 0;  
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);  
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s ease-in-out; 
+        }
+
+        ul li:hover .dropdown {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        ul li ul.dropdown li {
+            display: block;
+        }
+
+        ul li ul.dropdown li a {
+            padding: 15px;
+            color: #ddd;
+            font-weight: normal;
+            background-color: #444;  
+            transition: background-color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        ul li ul.dropdown li a:hover {
+            padding-left: 20px; 
+            color: white;  
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: transparent;
+            padding: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            border-radius: 5px;
+            transition: top 0.3s; 
+        }
+
+        header .logo img {
+            height: 100px;
+        }
+
+        .content-box {
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 1300px;
+            margin: 120px auto 40px auto;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .content-box h1 {
+            font-size: 30px;
+            font-family: 'Times New Roman', Times, serif;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .gallery-container {
+            width: 100%;
+            overflow-y: auto; 
+            max-height: 800px; 
+            display: flex;
+            flex-direction: column;
+            gap: 30px; 
+        }
+
+        .gallery-item {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6); 
+            border-radius: 15px;
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px); 
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-item img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.05); 
+        }
+
+        .gallery-item .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+            text-align: left;
+            padding-left: 20px;
+            width: 100%;
+        }
+
+        .gallery-item .content h2 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: capitalize; 
+            color: #f0a500;
+        }
+
+        .gallery-item .content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+
+        .gallery-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .gallery-container::-webkit-scrollbar-thumb {
+            background-color: #464646;
+            border-radius: 10px;
+        }
+
+        .gallery-container::-webkit-scrollbar-thumb:hover {
+            background-color: #464646;
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 40px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        footer a {
+            color: #f0a500;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .country-tabs {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .country-tab {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 15px 30px;
+            margin: 0 10px;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            text-align: center;
+        }
+
+        .country-tab:hover {
+            background-color: #f0a500;
+            transform: scale(1.1);
+        }
+
+        .country-tab.active {
+            background-color: #f0a500;
+            color: #fff;
+        }
+
+        .country-content {
+            display: none;
+        }
+
+        .country-content.active {
+            display: block;
+        }
+
+    </style>
+</head>
+
+<body style="background-image: linear-gradient(#bcb7c8, #2c2a2c);">
+
+    <header id="header" id="top">
+        <a href="home.html" class="logo">
+            <img src="logo WURS 1.png" alt="Logo" style="height: 100px; vertical-align: middle;">
+        </a>
+        <ul>
+            <li><a href="home.html">HOME</a></li>
+            <li>
+                <a href="artist.html">ARTIST</a>
+                <ul class="dropdown">
+                    <li><a href="idol.html">IDOL</a></li>
+                    <li><a href="actor.html">ACTOR</a></li>
+                </ul>
+            </li>
+            <li><a href="content.html">CONTENT</a>
+                <ul class="dropdown">
+                    <li><a href="drama.html">DRAMA</a></li>
+                    <li><a href="varietyshow.html">VAIRETY SHOW</a></li>
+                </ul>
+            </li>
+            <li><a href="audition.html">AUDITION</a></li>
+            <li><a href="contactus.html">CONTACT US</a></li>
+        </ul>    
+    </header>
+
+    <div class="content-box">
+        <h1><i>Variety Show</i></h1>
+
+        <div class="country-tabs">
+            <div class="country-tab active" id="koreaTab">Korea</div>
+            <div class="country-tab" id="chinaTab">China</div>
+            <div class="country-tab" id="thailandTab">Thailand</div>
+        </div>
+
+        <div class="country-content active" id="koreaContent">
+            <h2>Korean Variety Show</h2>
+            <p>Korean variety shows are known for their high-energy, humor, and unique formats. They often feature celebrity guests participating in challenges, games, and skits that showcase their personalities and create entertaining interactions.</p>
+               <div class="gallery-container">
+
+                <div class="gallery-item">
+                    <a href="https://youtu.be/Af3qhvxl-qU" target="_blank">
+                        <img src="exovs.png" alt="EXO Variety Show">
+                    </a>
+                    <div class="content">
+                        <h2>I can't convince you of this...! | Cream Inc. Soda Development Team pt.1</h2>
+                        <p>This variety show segment where the EXO members are tasked with developing a new soda flavor for the fictional company "Cream Inc." The show mixes humor, creativity, and team dynamics as they work together (or hilariously fail) to create the perfect soda.</p>
+                    </div>
+                </div>
+    
+                <div class="gallery-item">
+                    <a href="https://youtu.be/CBxftTkCsqY" target="_blank">
+                        <img src="exovs1.png" alt="EXO Variety Show">
+                    </a>
+                    <div class="content">
+                        <h2>EXO's barbecue, how delicious is it? (feat. Jongdae Stew & Lobster) </h2>
+                        <p>This variety show segment where the EXO members gather for a barbecue, featuring Jongdae's (Chen's) special stew and lobster. The episode showcases the members enjoying food, sharing laughs, and bonding over delicious dishes in a relaxed setting.</p>
+                    </div>
+                </div>
+    
+                <div class="gallery-item">
+                    <a href="https://youtu.be/cPHxhLbdY_I" target="_blank">
+                        <img src="theboyzvs.png" alt="The Boyz Variety Show">
+                    </a>
+                    <div class="content">
+                        <h2>Chuseok Special | Cover the family of 最高! Kim Kane VS Igane</h2>
+                        <p>In this episode, it is a special Chuseok episode of The BOYZ's variety show, where the members compete in fun and quirky challenges. The competition pits "Kim Kane" and "Igane" against each other in a humorous showdown, with the members taking on unique roles and tasks related to family and tradition.</p>
+                    </div>
+                </div>
+    
+                <div class="gallery-item">
+                    <a href="https://youtu.be/FfcIsFKAdy0" target="_blank">
+                        <img src="theboyzvs1.png" alt="The Boyz Variety Show">
+                    </a>
+                    <div class="content">
+                        <h2>THE BOYZ gets excited about the open talk and goes berserk | Idol Human Theater</h2>
+                        <p>In this episode, it is an episode from The BOYZ's variety show Idol Human Theater, where the members participate in an open talk segment that leads to chaotic and hilarious moments. As they discuss personal stories and emotions, the group's excitement spirals out of control, leading to a fun and unpredictable atmosphere.</p>
+                    </div>
+                </div>
+    
+                <div class="gallery-item">
+                    <a href="https://youtu.be/D9P8MbUGTKM" target="_blank">
+                        <img src="aespavs1.png" alt="Aespa Variety Show">
+                    </a>
+                    <div class="content">
+                        <h2>[aesparty] EP.01-1 Earthy Idol</h2>
+                        <p>The first episode of aesparty, a variety show featuring the K-pop group aespa. In this episode, the members embrace the theme of "Earthy Idol," engaging in fun activities and challenges that highlight their natural, down-to-earth personalities, showcasing their charms beyond the stage.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <a href="https://youtu.be/KLDzkwYPIx0" target="_blank">
+                        <img src="aespavs2.png" alt="Aespa Variety Show 2">
+                    </a>
+                    <div class="content">
+                        <h2>[We Flash] I apologize to you!!! | aespa Fashion Survival EP.01</h2>
+                        <p>The first episode of aespa's fashion-focused survival show, We Flash. In this episode, the members are put to the test with various fashion challenges, leading to moments of tension, humor, and apologies as they try to impress with their style and creativity.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <a href="https://youtu.be/WBdQnhwO4gQ?list=PLNF8K9Ddz0kJWl_ftRAo0aNJCSZlQVkRd" target="_blank">
+                        <img src="blackpinkvs.png" alt="Blackpink Variety Show">
+                    </a>
+                    <div class="content">
+                        <h2>'BLACKPINK HOUSE' EP.1-1</h2>
+                        <p>The first episode of BLACKPINK HOUSE, a reality show that takes viewers behind the scenes of BLACKPINK's lives. In this episode, the members move into a new house together, embarking on a fresh chapter of their lives, filled with fun activities, candid moments, and team bonding.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <a href="https://youtu.be/O_ibCeLnhPQ?list=PLNF8K9Ddz0kIrPevRMAxtlj5_BK7KPg57" target="_blank">
+                        <img src="blackpinkvs1.png" alt="Blackpink Variety Show 2">
+                    </a>
+                    <div class="content">
+                        <h2>'24/365 with BLACKPINK' EP.16</h2>
+                        <p>A  part of a reality series that follows BLACKPINK's day-to-day lives, offering fans an intimate look at the group's personal and professional moments. In EP.16, the members reflect on their journey, sharing behind-the-scenes moments, and highlighting their growth as individuals and as a group.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <a href="https://youtu.be/Yx39TKsjPTc?list=PLUpvLGhxomjaTUpltSrHMeOLeWnEaW-5w" target="_blank">
+                        <img src="nctvs.png" alt="NCT Variety Show">
+                    </a>
+                    <div class="content">
+                        <h2>NCT Fall Workshop Ep.3 ❮ This is an extroverted city! ❯ | THE NCT SHOW</h2>
+                        <p>he third episode of THE NCT SHOW, where NCT members explore the vibrant energy of an extroverted city. In this episode, the group takes part in various outdoor activities and challenges, immersing themselves in the lively atmosphere of the city, while having fun and bonding as a team.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <a href="https://youtu.be/5vitLqVXFyA" target="_blank">
+                        <img src="nctvs1.png" alt="NCT Variety Show">
+                    </a>
+                    <div class="content">
+                        <h2>(SUB) There's an idol who gets delusion of Heart Signal love triangle? Dopamine full-charged NCT127</h2>
+                        <p>A fun and lighthearted episode from NCT127's variety show where the members engage in playful scenarios involving a love triangle, inspired by the popular dating show Heart Signal. The episode is filled with comedic moments, misunderstandings, and a lot of "dopamine" as the members get caught up in the playful drama.</p>
+                    </div>
+                </div>
+ 
+            </div>
+        </div> 
+    
+       
+        
+        <div class="country-content" id="chinaContent">
+            <h2>Chinese Variety Show</h2>
+            <p>Chinese variety shows often blend music, dance, games, and storytelling with celebrity participation. They emphasize teamwork, cultural themes, and competition, with popular formats like talent shows, reality competitions, and talk shows.</p>
+                <div class="gallery-container">
+                    <div class="gallery-item">
+                        <a href="https://youtu.be/JaA2pGAeT38?list=PLTd-qeSNNZLIsMLPjgMf9FxJ_90OZu48j" target="_blank">
+                            <img src="into1vs.png" alt="into1 variety show">
+                        </a>
+                        <div class="content">
+                            <h2>N Ways to Open INTO1 Full Edition Issue 1: The long-awaited departure for your first outing! | All Kinds of INTO1 TO THE SEA</h2>
+                            <p>The first episode of a special variety show featuring INTO1, a Chinese boy group. In this episode, the members prepare for their first outing together, venturing to the sea. The show highlights their fun and adventurous sides as they bond through various challenges and activities during the trip.</p>
+                        </div>
+                    </div>
+        
+                    <div class="gallery-item">
+                        <a href="https://youtu.be/2ij8wXR1o74?list=PLgYHoy9R0TGQHjkB4lVYToshexq7lo0AL" target="_blank">
+                            <img src="into1vs2.png" alt="into1 variety show">
+                        </a>
+                        <div class="content">
+                            <h2>Unknown Weekly! INTO1!】Vlog EP1: Congratulation! We are INTO1 ~ [Unknown Weekly! INTO1!】 Wow! It's a group! Creation Camp CHUANG2021</h2>
+                            <p>The first episode of Unknown Weekly! INTO1!, a vlog-style series that follows the newly-formed group INTO1 after their success on the Chinese survival show Creation Camp 2021 (CHUANG 2021). In this episode, the members celebrate their debut as a group, sharing their excitement and gratitude for the journey that brought them together.</p>
+                        </div>
+                    </div>
+        
+                    <div class="gallery-item">
+                        <a href="https://youtu.be/lmKQwP89Gyg?list=PLMX26aiIvX5o5X2agfbLmlswdptbZjhg2" target="_blank">
+                            <img src="risevs.png" alt="R1SE variety show">
+                        </a>
+                        <div class="content">
+                            <h2>《Super R1SE · Energy Storing Season》【Episode 1】: Set off for team building! R1SE scared into memes</h2>
+                            <p>The first episode of R1SE · Energy Storing Season, a variety show featuring the Chinese boy group R1SE. In this episode, the members participate in team-building activities, but things take an unexpected turn as they get spooked during the challenges, leading to moments that quickly turn into memes.</p>
+                        </div>
+                    </div>
+        
+                    <div class="gallery-item">
+                        <a href="https://youtu.be/og-IfWQpIGE?list=PLDx6OMfXFhFQzaPba4V3nbjD9rzpYgOgo" target="_blank">
+                            <img src="risevs2.png" alt="R1SE variety show">
+                        </a>
+                        <div class="content">
+                            <h2>[Before Sunrise] EP01 (Part1) : All 11 Boys Back at the Island. Lights up Again in the Dorm</h2>
+                            <p>The first episode of Before Sunrise, a variety show featuring the Chinese boy group R1SE. In this episode, all 11 members return to their dorm on the island, rekindling their bonds as they settle back into their shared living space. The episode focuses on their interactions, lighthearted moments, and preparations for the upcoming activities they’ll face together.</p>
+                        </div>
+                    </div>
+        
+                </div> 
+            </div> 
+        
+       
+
+        <div class="country-content" id="thailandContent">
+            <h2>Thai Variety Show</h2>
+            <p>Thai variety shows are known for their light-hearted, fun, and often quirky formats. They frequently include celebrity guest appearances, comedic skits, games, and challenges, as well as cultural elements.</p>
+                <div class="gallery-container">
+
+                    <div class="gallery-item">
+                        <a href="https://youtu.be/JsIyBy7lckA?list=PLP6MWyq-D4YvceVj4aH3rjkXI_X0JeF55" target="_blank">
+                            <img src="lyknvs.png" alt="LYKN variety show">
+                        </a>
+                        <div class="content">
+                            <h2>HOME TOUR "Nut LYKN" In this Werewolf battle, who is the real wolf | ARM SHARE EP.127 [Eng Sub]</h2>
+                            <p>A variety show featuring the LYKN group. In this episode, the members give a tour of their home, called Nut LYKN, showcasing their living space and personal touches. The fun continues as they play a game of Werewolf, where they must figure out who among them is the "real wolf" in a tense and comedic atmosphere.</p>
+                        </div>
+                    </div>
+        
+                    <div class="gallery-item">
+                        <a href="https://youtu.be/RRB1KbY9OCc" target="_blank">
+                            <img src="lyknvs2.png" alt="LYKN variety show">
+                        </a>
+                        <div class="content">
+                            <h2>Jamie Nine-Four LYKN Gotchi Korean Food Launch! | Pepsi Asks for a Treat EP.2 [Eng Sub]</h2>
+                            <p>The second episode of Pepsi Asks for a Treat, a variety show featuring the LYKN group. In this episode, the group celebrates the launch of Jamie Nine-Four LYKN Gotchi, a new Korean food product. They dive into food tasting, fun challenges, and entertaining moments, with Pepsi involved in asking for a special treat during the launch event.</p>
+                        </div>
+                    </div>
+        
+                    <div class="gallery-item">
+                        <a href="https://youtu.be/gmqan4GXY1s?list=PLy3g0U0Nk6CHj4RHM4eC5WXmZazPT1pV5" target="_blank">
+                            <img src="busvs.png" alt="BUS variety show">
+                        </a>
+                        <div class="content">
+                            <h2>BUSSING THAILAND EP.1 [Full EP] | 15 มิ.ย. 67 [ENG SUB]</h2>
+                            <p>The first episode of BUSSING THAILAND, a variety show featuring the Thailand BUS Group. In this episode, the group embarks on an exciting journey around Thailand, exploring the local culture, food, and landscapes. They engage in fun challenges and activities, while also sharing their experiences and interactions with locals, providing an entertaining and immersive view of the country.</p>
+                        </div>
+                    </div>
+        
+                    <div class="gallery-item">
+                        <a href="https://youtu.be/VMaDfX8UzWM?list=PLcKQ2VBqwQxOy5sp4CSc1xx4KS1VsuYXb" target="_blank">
+                            <img src="busvs2.png" alt="BUS variety show">
+                        </a>
+                        <div class="content">
+                            <h2>[I Love Siam Center EP4] A Date with KHUNPOL BUS</h2>
+                            <p>The fourth episode of the variety show I Love Siam Center, which features fun and lighthearted activities related to Thai culture. In this episode, the members of KHUNPOL BUS go on a date, exploring different locations and engaging in various challenges and games, giving fans a glimpse into their personalities and interactions.</p>
+                        </div>
+                    </div>
+        
+                    <div class="gallery-item">
+                        <a href="https://youtu.be/ZQnvWJUVrmE" target="_blank">
+                            <img src="jeffsaturvs.png" alt="Jeff Satur variety show">
+                        </a>
+                        <div class="content">
+                            <h2>"Jeff-Tei" just looking at my sister's face is embarrassing!! | Wodo Wo Wo Wa EP.17</h2>
+                            <p>The 17th episode of Wodo Wo Wo Wa, a variety show featuring Jeff and Tei. In this episode, the two are put in a funny and awkward situation where Jeff feels embarrassed simply by looking at his sister's face, creating amusing tension and playful moments as they interact.</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <a href="https://youtu.be/gGzTY6uPJtg" target="_blank">
+                            <img src="jeffsaturvs1.png" alt="Jeff Satur variety show">
+                        </a>
+                        <div class="content">
+                            <h2>The Driver EP.250 - Jeff Satur</h2>
+                            <p>The 250th episode of The Driver, a popular variety show where guests, often celebrities, are interviewed while being driven around in a car. In this episode, Jeff Satur, a Thai singer and actor, is the special guest. He shares insights into his career, personal experiences, and engages in casual conversation with the host, all while driving through various locations.</p>
+                        </div>
+                    </div>
+        
+                </div> 
+                </div>
+
+        </div>
+        </div>
+
+        
+
+
+    <footer>
+        <p>&copy; 2025 WURS Entertainment. All Rights Reserved.</p>
+        <p>Follow us on 
+            <a href="https://www.instagram.com/wurs_official" target="_blank">Instagram</a>, 
+            <a href="https://youtube.com/@wurs25?si=yTaeZYSKQ9SRFOEf" target="_blank">Youtube</a>, 
+            <a href="https://www.tiktok.com/@wurs_official?_t=ZS-8tPW5cofwqw&_r=1" target="_blank">Tiktok</a>
+        </p>
+    </footer>
+
+    <script>
+            let lastScrollTop = 0;
+    const header = document.getElementById("header");
+
+    window.addEventListener("scroll", function() {
+        let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (currentScroll > lastScrollTop) {
+            header.style.top = "-100px";  
+        } else {
+            header.style.top = "0";  
+        }
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; 
+    });
+        
+        const koreaTab = document.getElementById('koreaTab');
+        const chinaTab = document.getElementById('chinaTab');
+        const thailandTab = document.getElementById('thailandTab');
+        
+        const koreaContent = document.getElementById('koreaContent');
+        const chinaContent = document.getElementById('chinaContent');
+        const thailandContent = document.getElementById('thailandContent');
+
+        function switchTab(tab, content) {
+            document.querySelectorAll('.country-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.country-content').forEach(content => content.classList.remove('active'));
+            
+            tab.classList.add('active');
+            content.classList.add('active');
+        }
+
+        koreaTab.addEventListener('click', () => switchTab(koreaTab, koreaContent));
+        chinaTab.addEventListener('click', () => switchTab(chinaTab, chinaContent));
+        thailandTab.addEventListener('click', () => switchTab(thailandTab, thailandContent));
+    </script>
+
+</body>
+</html>

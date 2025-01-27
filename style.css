@@ -1,0 +1,104 @@
+ 
+  .title{
+    font-family: 'Times New Roman', Times, serif;
+    color: #802711;
+    text-align: center;
+  }
+
+
+  header {
+    text-align: center;
+    color: white;
+    
+  }
+  
+  .header img {
+    width: 100%;
+    height: auto;
+  }
+  
+  header h2 {
+      font-size: 50px;
+      color: white;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  }
+  
+  footer {
+      text-align: center;
+  }
+  
+  .topnav {
+    overflow: hidden;
+  }
+  
+  .topnav a {
+    float: right;
+    text-align: center;
+    color: #802711;
+    padding: 14px 16px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    border-radius: 50px;
+  }
+  
+  .topnav a:hover {
+    color: #54190bbf;
+  }
+  
+  
+  article {
+    float: center;
+    width: 100%;
+    background-color: #802711ac;
+    text-align: center ;
+    padding: 20px;
+    height: auto;
+  }
+  
+  section::after {
+    content: none;
+    display: table;
+    clear: both;
+  }
+  
+  @media (max-width: 600px) {
+    nav, article {
+      width: 100%;
+      height: auto;
+    }
+  }
+  
+  table, 
+  th, 
+  td {
+      border: 1px solid  black;
+      border-collapse: collapse;
+      padding: 6px;
+      text-align: center;
+  }
+  
+* {
+  box-sizing: border-box;
+}
+
+.datetime-container {
+  padding: 0;
+  margin: 0;  
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; 
+  text-align: left;
+}
+
+.datetime-container h1 {
+  margin: 0;
+}
+
+.datetime-container .date, .datetime-container .day, .datetime-container .clock {
+  margin-right: 10px;
+  margin-top: 12px;
+  margin-left: 10px;
+}
+
+.datetime-container .clock {
+  margin-right: 0;
+}

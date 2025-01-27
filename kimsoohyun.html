@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>KIM SOO HYUN</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 100vh; 
+  margin: 0; 
+  font-family: Arial, sans-serif;
+  background-image: url('background.jpeg'); 
+  background-size: cover; 
+  background-position: center; 
+  background-attachment: fixed;
+}
+.card {
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 60%;
+  max-width: 500px;
+  margin: auto;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px; 
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+.film li{
+    list-style-type: none;
+    margin: 0;
+  }
+  .film li::before{
+    content:"🎬";
+    font-size:15px;
+    margin-right: 3px;
+  }
+
+  .roll li{
+    list-style-type: none;
+    margin: 0;
+  }
+  .roll li::before{
+    content:"🎥";
+    font-size:15px;
+    margin-right: 3px;
+  }
+
+.social-icons {
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    gap:25px;
+}
+.social-icons a {
+    display: flex; 
+    align-items: center;
+    text-decoration: none;
+    color: white; 
+    font-family: Arial, sans-serif;
+    font-size: 17px; 
+    gap: 8px; 
+}
+
+.social-icons img {
+    width: 11px;
+    height: 11px;
+}
+
+/* Footer */
+.footer{
+ text-align: center;
+ margin-top: auto;
+ background-color: rgba(37, 36, 36, 0.788);
+ width:auto;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <img src="kimsoohyun.jpg" alt="Avatar" style="width:100%; font-family: 'Courier New', Courier, monospace;">
+  <div class="container">
+    <h1 style="text-align: center;"><b>Kim Soo Hyun (김수현)</b></h1> 
+    <p><b>Birthday : </b>February 16th, 1988</p>
+    <p id="drama" style="color:black; text-align:left;"><b>Drama Series :</b></p>
+    <ul class="film" style="padding-left: 0; margin: 0; text-align: left;">
+        <li>Queen of Tears | 2024</li>
+        <li>ONE ORDINARY DAY | 2021</li>
+        <li>It’s Okay Not to Be Okay | 2020</li>
+        <li>The Producers | 2015</li>
+        <li>My Love From the Star | 2013-2014</li>
+        <li>The Moon Embracing The Sun | 2012</li>
+        <li>Dream High | 2011</li>
+        <li>Giant | 2010</li>
+        <li>Father’s House | 2009</li>
+        <li>Will It Snow For Christmas? | 2009</li>
+        <li>Jungle Fish (정글피쉬) | 2008</li>
+        <li>Kimchi Cheese Smile | 2007-2008</li>
+    </ul>
+
+    <p id="movie" style="color:black; text-align:left;"><b>Movies :</b></p>
+    <ul class="roll" style="padding-left: 0; margin: 0; text-align: left;">
+        <li>Real | 2017 </li>
+        <li>Miss Granny | 2014</li>
+        <li>Secretly, Greatly | 2013</li>
+        <li>The Thieves | 2012</li>
+    </ul><br><br></div>
+   
+<div class="footer">
+    <div class="social-icons">
+        <a href="https://www.instagram.com/soohyun_k216//"  target="_blank">
+          <img src="ig2.png" alt="Instagram logo" style="width:42px; height:42px;"><span>soohyun_k216</span>
+        </a>
+    </div>
+</div> 
+</div>
+
+
+
+</body>
+</html> 
