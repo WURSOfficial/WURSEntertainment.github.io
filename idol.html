@@ -1,0 +1,368 @@
+<html>
+    <head>
+    <style>
+       body {
+           font-family: 'Poppins', sans-serif;
+           margin: 0;
+           padding: 0;
+           background-image: linear-gradient(#bcb7c8, #2c2a2c);
+           opacity: 0;
+           animation: fadeIn 1s ease-in-out forwards;
+}
+
+    @keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+       }
+/* General Styles */
+ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        ul li {
+            display: inline-block;
+            position: relative;
+        }
+
+        ul li a {
+            display: block;
+            padding: 20px 25px;
+            color: #1b1816;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Stylish Dropdown Menu */
+        ul li a:hover {
+            color: white;  /* Change text color on hover */
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);  /* Soft shadow on hover */
+        }
+
+        ul li ul.dropdown {
+            width: 100%;  /* Make the dropdown width same as the header */
+            background: #444;  /* Dark background for dropdown */
+            position: absolute;
+            display: none;
+            left: 0;  /* Align to the left of parent */
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);  /* Soft shadow for dropdown */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s ease-in-out; /* Smooth dropdown transition */
+        }
+
+        /* Show dropdown on hover */
+        ul li:hover .dropdown {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        ul li ul.dropdown li {
+            display: block;
+        }
+
+        /* Styling for dropdown items */
+        ul li ul.dropdown li a {
+            padding: 15px;
+            color: #ddd;
+            font-weight: normal;
+            background-color: #444;  /* Darker background for each dropdown item */
+            transition: background-color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        ul li ul.dropdown li a:hover {
+            padding-left: 20px;  /* Sliding effect */
+            color: white;  /* Change text color on hover */
+            background-color: #383434; /* Warna hover */
+        }
+
+        /* Make sure the header is fixed and above content */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: transparent;
+            padding: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            border-radius: 5px;
+            transition: top 0.3s; /* For smooth hiding */
+        }
+/* Add margin below header to push the tabs down */
+.tabs-container {
+    flex: 1; /* Fill remaining space */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    text-align: center; /* Align text */
+    margin-top: 120px; /* Space for fixed header */
+    }
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: transparent;
+  background-color: transparent;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border:1px solid;
+  border-radius: 20px;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+  margin: 0 6px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #e4e1e0; 
+    color: #000000;
+    border-color: #444343;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: none;
+  border-top: none;
+  text-align: center;
+}
+        #Korea {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .container:hover {
+            transform: scale(1.05);
+        }
+
+        .image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .container:hover .overlay {
+            opacity: 1;
+        }
+
+        .tabcontent {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 40px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        footer a {
+            color: #f0a500;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <header id="header"> 
+        <a href="home.html" class="logo"> 
+            <img src="logo WURS 1.png" alt="Logo" style="height: 100px; vertical-align: middle;"> 
+        </a> 
+        <ul> 
+            <li><a href="home.html">HOME</a></li> 
+            <li> 
+                <a href="artist.html">ARTIST</a> 
+                <ul class="dropdown"> 
+                    <li><a href="idol.html">IDOL</a></li> 
+                    <li><a href="actor.html">ACTOR</a></li> 
+                </ul> 
+            </li> 
+            <li><a href="content.html">CONTENT</a> 
+                <ul class="dropdown"> 
+                    <li><a href="drama.html">DRAMA</a></li> 
+                    <li><a href="varietyshow.html">VARIETY SHOW</a></li> 
+                </ul> 
+            </li> 
+            <li><a href="audition.html">AUDITION</a></li> 
+            <li><a href="contactus.html">CONTACT US</a></li> 
+        </ul>     
+    </header>
+    
+    <div class="tabs-container">
+        <h1>♫⋆｡IDOL˚♬ ﾟ.</h1>
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'Korea')" id="defaultTab">KOREA</button>
+            <button class="tablinks" onclick="openTab(event, 'China')">CHINA</button>
+            <button class="tablinks" onclick="openTab(event, 'Thailand')">THAILAND</button>
+        </div>
+
+        <div id="Korea" class="tabcontent">
+            <div class="container">
+                <img src="exo.jpg" alt="EXO" class="image">
+                <a href="exo.html" target="_blank"><div class="overlay">EXO</div></a>
+            </div>
+            <div class="container">
+                <img src="theboyz.jpg" alt="The Boyz" class="image">
+                <a href="theboyz.html" target="_blank"><div class="overlay">THE BOYZ</div></a>
+            </div>
+            <div class="container">
+                <img src="aespa3.jpg" alt="Aespa" class="image">
+                <a href="aespa.html" target="_blank"><div class="overlay">AESPA</div></a>
+            </div>
+            <div class="container">
+                <img src="blackpink2.jpeg" alt="BLACKPINK" class="image">
+                <a href="blackpink.html" target="_blank"><div class="overlay">BLACKPINK</div></a>
+            </div>
+            <div class="container">
+                <img src="nct2.jpg" alt="NCT" class="image">
+                <a href="nct.html" target="_blank"><div class="overlay">NCT</div></a>
+            </div>
+        </div>
+
+        <div id="China" class="tabcontent">
+            <div class="container">
+                <img src="INTO1.jpeg" alt="INTO1" class="image">
+                <a href="INTO1.html" target="_blank"><div class="overlay">INTO1</div></a>
+            </div>
+            <div class="container">
+                <img src="R1SE.jpg" alt="R1SE" class="image">
+                <a href="r1se.html" target="_blank"><div class="overlay">R1SE</div></a>
+            </div>
+        </div>
+
+        <div id="Thailand" class="tabcontent">
+            <div class="container">
+                <img src="lykn.jpg" alt="LYKN" class="image">
+                <a href="lykn.html" target="_blank"><div class="overlay">LYKN</div></a>
+            </div>
+            <div class="container">
+                <img src="bus.jpg" alt="BUS" class="image">
+                <a href="bus.html" target="_blank"><div class="overlay">BUS</div></a>
+            </div>
+            <div class="container">
+                <img src="jeffsatur.jpg" alt="Jeff Satur" class="image">
+                <a href="jeffsatur.html" target="_blank"><div class="overlay">JEFF SATUR</div></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            const tabcontent = document.getElementsByClassName("tabcontent");
+            const tablinks = document.getElementsByClassName("tablinks");
+
+            for (let i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            for (let i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            document.getElementById(tabName).style.display = "flex";
+            evt.currentTarget.className += " active";
+        }
+
+        document.getElementById("defaultTab").click();
+    </script>
+
+<script>
+    let lastScrollTop = 0;
+    const header = document.getElementById("header");
+
+    window.addEventListener("scroll", function() {
+        let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (currentScroll > lastScrollTop) {
+            // Scrolling down
+            header.style.top = "-100px";  // Hide header when scrolling down
+        } else {
+            // Scrolling up
+            header.style.top = "0";  // Show header when scrolling up
+        }
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Prevent negative values
+    });   
+</script>
+<footer>
+    <p style="font-family: 'Times New Roman', Times, serif;">&copy; 2025 WURS Entertainment. All Rights Reserved.</p>
+    <p style="font-family: 'Times New Roman', Times, serif;">Follow us on 
+        <a href="https://www.instagram.com/wurs_official" target="_blank">Instagram</a>, 
+        <a href="https://youtube.com/@wurs25?si=yTaeZYSKQ9SRFOEf" target="_blank">Youtube</a>, 
+        <a href="https://www.tiktok.com/@wurs_official?_t=ZS-8tPW5cofwqw&_r=1" target="_blank">Tiktok</a>
+    </p>
+</footer>
+</body>
+</html>

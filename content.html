@@ -1,0 +1,349 @@
+<html>
+<head>
+    <link rel="icon" href="logo WURS.jpg" type="image/gif" size="16x16">
+    <title>Our Content</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        ul li {
+            display: inline-block;
+            position: relative;
+        }
+
+        ul li a {
+            display: block;
+            padding: 20px 25px;
+            color: #1b1816;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+
+        ul li a:hover {
+            color: white; 
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
+        }
+
+        ul li ul.dropdown {
+            width: 100%;  
+            background: #333; 
+            position: absolute;
+            display: none;
+            left: 0;  
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);  
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s ease-in-out; 
+        }
+
+        ul li:hover .dropdown {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        ul li ul.dropdown li {
+            display: block;
+        }
+
+        ul li ul.dropdown li a {
+            padding: 15px;
+            color: #ddd;
+            font-weight: normal;
+            background-color: #444;  
+            transition: background-color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        ul li ul.dropdown li a:hover {
+            padding-left: 20px;  
+            color: white; 
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: transparent;
+            padding: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            border-radius: 5px;
+            transition: top 0.3s; 
+        }
+
+        .content-box {
+            background: rgba(0, 0, 0, 0.3); 
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;  
+            max-width: 1300px;  
+            margin: 100px auto 40px auto;  
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+
+        .content-box h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .content-box p {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            text-align: justify;  
+        }
+
+        .gallery-container {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .gallery {
+            display: flex;
+            gap: 15px;
+            animation: scroll 35s linear infinite;
+        }
+
+        .gallery img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgb(43, 41, 41);
+        }
+
+        .image-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .image-wrapper:hover .overlay {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .image-wrapper img:hover {
+            filter: blur(5px); 
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .gallery:hover {
+            animation-play-state: paused;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 40px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        footer a {
+            color: #f0a500;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body style="background-image: linear-gradient(#bcb7c8, #2c2a2c);">
+
+    <header id="header" > 
+        <a href="home.html" class="logo"> 
+            <img src="logo WURS 1.png" alt="Logo" style="height: 100px; vertical-align: middle;"> 
+        </a> 
+        <ul> 
+            <li><a href="home.html">HOME</a></li> 
+            <li> 
+                <a href="artist.html">ARTIST</a> 
+                <ul class="dropdown"> 
+                    <li><a href="idol.html">IDOL</a></li> 
+                    <li><a href="actor.html">ACTOR</a></li> 
+                </ul> 
+            </li> 
+            <li><a href="content.html">CONTENT</a> 
+                <ul class="dropdown"> 
+                    <li><a href="drama.html">DRAMA</a></li> 
+                    <li><a href="varietyshow.html">VARIETY SHOW</a></li> 
+                </ul> 
+            </li> 
+            <li><a href="audition.html">AUDITION</a></li> 
+            <li><a href="contactus.html">CONTACT US</a></li> 
+        </ul>     
+    </header>
+
+<div class="content-box">
+    <h1 style="font-size: 30px; font-family: 'Times New Roman', Times, serif;"><i>Our Content</i></h1>
+
+    <div class="gallery-container">
+        <div class="gallery">
+            <div class="image-wrapper">
+                <a href="drama.html">
+                <img src="qot.jpg" alt="Queen of Tears"></a>
+                <div class="overlay">Queen of Tears</div>
+            </div>
+            <div class="image-wrapper">
+                <a href="varietyshow.html">
+                <img src="exovs.png" alt="EXO Variety Show"></a>
+                <div class="overlay">EXO Variety Show</div>
+            </div>
+            <div class="image-wrapper">
+                <a href="drama.html">
+                <img src="eclipseheart.jpg" alt="Eclipse of The Heart"></a>
+                <div class="overlay">Eclipse of The Heart</div>
+            </div>
+            <div class="image-wrapper">
+                <a href="varietyshow.html">
+                <img src="into1vs.png" alt="INTO1 Variety Show"></a>
+                <div class="overlay">INTO1 Variety Show</div>
+            </div>
+            <div class="image-wrapper">
+                <a href="drama.html"><img src="lovelyrunner.jpg" alt="Lovely Runner"></a>
+                <div class="overlay">Lovely Runner</div>
+            </div>
+        </div>
+
+    </div></br>
+    <div class="gallery-container">
+        <div class="gallery">
+            <div class="image-wrapper">
+                <a href="varietyshow.html">
+                <img src="nctvs.png" alt="NCT Variety Show"></a>
+                <div class="overlay">NCT Variety Show</div>
+            </div>
+            <div class="image-wrapper">
+                <a href="drama.html">
+                <img src="itsokaytonotbeokay.jpg" alt="Its Okay To Not Be Okay"></a>
+                <div class="overlay">Its Okay To Not Be Okay</div>
+            </div>
+            <div class="image-wrapper">
+                <a href="drama.html">
+                <img src="meteorgarden.jpeg" alt="meteor garden"></a>
+                <div class="overlay">Meteor Garden</div>
+            </div>
+            <div class="image-wrapper">
+                <a href="varietyshow.html">
+                <img src="aespavs1.png" alt="AESPA Variety Show"></a>
+                <div class="overlay">AESPA Variety Show</div>
+            </div>
+            <div class="image-wrapper">
+                <a href="drama.html">
+                <img src="mycherieamour.jpg" alt="My Cherie Amour"></a>
+                <div class="overlay">My Cherie Amour</div>
+            </div>
+        </div>
+
+    </div></br>
+    <div class="gallery-container">
+        <div class="gallery">
+            <div class="image-wrapper">
+                <a href="drama.html">
+                <img src="thecrownprincess.jpg" alt="The Crown Princess"></a>
+                <div class="overlay">The Crown Princess</div>
+            </div>
+            <div class="image-wrapper">
+                <a href="varietyshow.html">
+                <img src="theboyzvs1.png" alt="The BOYZ Variety Show"></a>
+                <div class="overlay">The BOYZ Variety Show</div>
+            </div>
+            <div class="image-wrapper">
+                <a href="drama.html">
+                <img src="ourtime.jpg" alt="Our Time"></a>
+                <div class="overlay">Our Time</div>
+            </div>
+            <div class="image-wrapper">
+                <a href="varietyshow.html">
+                <img src="lyknvs2.png" alt="LYKN Variety Show"></a>
+                <div class="overlay">LYKN Variety Show</div>
+            </div>
+            <div class="image-wrapper">
+                <a href="drama.html">
+                <img src="wheniflytowardyou.jpg" alt="When I Fly Toward You"></a>
+                <div class="overlay">When I Fly Toward You</div>
+            </div>
+        </div>
+    </div></br>
+    </div>
+
+
+<footer>
+    <p>&copy; 2025 WURS Entertainment. All Rights Reserved.</p>
+    <p>Follow us on 
+        <a href="https://www.instagram.com/wurs_official" target="_blank">Instagram</a>, 
+        <a href="https://youtube.com/@wurs25?si=yTaeZYSKQ9SRFOEf" target="_blank">Youtube</a>, 
+        <a href="https://www.tiktok.com/@wurs_official?_t=ZS-8tPW5cofwqw&_r=1" target="_blank">Tiktok</a>
+    </p>
+</footer>
+
+<script>
+    let lastScrollTop = 0;
+    const header = document.getElementById("header");
+
+    window.addEventListener("scroll", function() {
+        let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (currentScroll > lastScrollTop) {
+            header.style.top = "-100px";  
+        } else {
+            header.style.top = "0"; 
+        }
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; 
+    });
+</script>
+
+</body>
+</html>

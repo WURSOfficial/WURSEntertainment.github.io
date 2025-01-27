@@ -1,0 +1,387 @@
+<html>
+    <head>
+        <link rel="icon" href="iconlogo1.jpg" type="image/gif" size="16x16">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+        <title>Home</title>
+        <link href="style.css" type="text/css" rel="stylesheet">
+    </head>
+    <style>
+       
+        body {
+            font-family: "arial";
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(#bcb7c8, #2c2a2c);
+}
+        
+
+ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        ul li {
+            display: inline-block;
+            position: relative;
+        }
+
+        ul li a {
+            display: block;
+            padding: 20px 25px;
+            color: #1b1816;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+
+        ul li a:hover {
+            color: white;  
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        ul li ul.dropdown {
+            width: 100%;  
+            background: #333;  
+            position: absolute;
+            display: none;
+            left: 0;  
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);  
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s ease-in-out; 
+        }
+
+        ul li:hover .dropdown {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        ul li ul.dropdown li {
+            display: block;
+        }
+
+        ul li ul.dropdown li a {
+            padding: 15px;
+            color: #ddd;
+            font-weight: normal;
+            background-color: #444;  
+            transition: background-color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        ul li ul.dropdown li a:hover {
+            padding-left: 20px; 
+            color: white;  
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: transparent;
+            padding: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            border-radius: 5px;
+            transition: top 0.3s; 
+        }
+
+        header .logo img {
+            height: 100px;
+        }
+
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 30px;
+            font-style: italic;
+        }
+
+        .logo span {
+            color: rgb(73, 36, 2);
+        }
+ 
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+       
+        .slide {
+            display: none;
+            width: 100%;
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+        }
+
+      
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 50%;
+            z-index: 1000;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .dots-container {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .active-dot {
+            background-color: #717171;
+        }
+       
+        .slideshow-footer {
+    position: absolute;
+    bottom: 30;
+    width: 200%;
+    background: transparent;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 15px 30px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.footer-content > div {
+    text-align: center;  
+}
+
+.footer-content .social-icons {
+    margin-right: auto; 
+}
+
+.social-icons a {
+    color: white;
+    margin: 30 30px;
+    margin-left: 100px;
+}
+
+.slide {
+    position: relative;
+}
+
+.center-link {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.5); 
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.center-link:hover {
+    background-color: rgba(0, 0, 0, 0.7); 
+}
+
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <div class="slideshow-container">
+           
+            <div class="slide">
+                <img src="tbz.jpg" alt="Slide 1">
+                <a href="audition.html" class="center-link">More Details</a> 
+            </div>
+           
+            <div class="slide">
+                <img src="aespa2.jpg" alt="Slide 2">
+                <a href="audition.html" class="center-link">More Details</a> 
+            </div>
+            
+            <div class="slide">
+                <img src="bws.jpg" alt="Slide 3">
+                <a href="audition.html" class="center-link">More Details</a> 
+            </div>
+        
+        
+        <div class="slide">
+            <img src="exo1.jpg" alt="Slide 4">
+            <a href="audition.html" class="center-link">More Details</a>
+        </div>
+
+        <div class="slide">
+            <img src="blackpink.jpg" alt="Slide 5">
+            <a href="audition.html" class="center-link">More Details</a>
+        </div>
+
+        <div class="slide">
+            <img src="IU.jpg" alt="Slide 6">
+            <a href="audition.html" class="center-link">More Details</a>
+        </div>
+
+        <div class="slide">
+            <img src="bus1.jpg" alt="Slide 7">
+            <a href="audition.html" class="center-link">More Details</a>
+        </div>
+
+        <div class="slide">
+            <img src="jeff1.jpg" alt="Slide 8">
+            <a href="audition.html" class="center-link">More Details</a>
+        </div>
+
+        <div class="slide">
+            <img src="bailu.jpg" alt="Slide 9">
+            <a href="audition.html" class="center-link">More Details</a>
+        </div>
+
+        <div class="slide">
+            <img src="dylan2.jpg" alt="Slide 10">
+            <a href="audition.html" class="center-link">More Details</a>
+        </div>
+        </div>
+        
+      
+        <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="next" onclick="changeSlide(1)">&#10095;</button>
+
+        
+        
+        <div class="slideshow-footer">
+            <div class="footer-content" style="flex-direction: row; justify-content: space-between; align-items: center;">
+                <div>
+                    <img src="logo WURS 1.png" alt="Logo" style="height: 50px; vertical-align: middle;">
+                </div>
+                <div>
+                    <p>© 2025 WURS Entertainment Company. All rights reserved.</p>
+                </div>
+                <div class="social-icons">
+                    <a href="https://www.tiktok.com/@wurs_official?_t=ZS-8tCk8ayFkZQ&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.instagram.com/wurs_official?igsh=NHVjNmsyMTJ4b2Fj" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com/@wurs25?si=yTaeZYSKQ9SRFOEf" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        
+  
+   
+    
+        
+    <div class="dots-container">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+        <span class="dot" onclick="currentSlide(6)"></span>
+        <span class="dot" onclick="currentSlide(7)"></span>
+        <span class="dot" onclick="currentSlide(8)"></span>
+        <span class="dot" onclick="currentSlide(9)"></span>
+        <span class="dot" onclick="currentSlide(10)"></span>
+    </div>
+    </div>
+    </div>
+
+   
+<header>
+    <a href="home.html" class="logo">
+        <img src="logo WURS 1.png" alt="Logo" style="height: 100px; vertical-align: middle; size: 100px;">
+    </a>
+    <ul>
+        <li><a href="home.html">HOME</a></li>
+        <li><a href="aboutus.html">ABOUT US</a></li>
+        <li>
+            <a href="artist.html">ARTIST</a>
+            <ul class="dropdown">
+                <li><a href="idol.html">IDOL</a></li>
+                <li><a href="actor.html">ACTOR</a></li>
+            </ul>
+        </li>
+        
+
+        <li><a href="content.html">CONTENT</a></li>
+    
+        <li><a href="audition.html">AUDITION</a></li>
+        <li><a href="contactus.html">CONTACT US</a></li>
+    </ul>
+
+
+    
+</header>
+    
+
+
+
+
+<script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        let slides = document.querySelectorAll('.slide');
+        slides.forEach(slide => slide.style.display = 'none');
+        slideIndex++;
+        if (slideIndex > slides.length) slideIndex = 1;
+        slides[slideIndex - 1].style.display = 'block';
+        setTimeout(showSlides, 1500); 
+    }
+
+    function changeSlide(n) {
+        slideIndex += n - 1;
+        if (slideIndex < 0) slideIndex = document.querySelectorAll('.slide').length - 1;
+        showSlides();
+    }
+</script>
+
+</body>
+</html>

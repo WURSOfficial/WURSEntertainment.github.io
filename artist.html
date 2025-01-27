@@ -1,0 +1,390 @@
+<html>
+    <head>
+    <style>
+       body {
+           font-family: 'Poppins', sans-serif;
+           margin: 0;
+           padding: 0;
+           background-image: linear-gradient(#bcb7c8, #2c2a2c);
+           opacity: 0;
+           animation: fadeIn 1s ease-in-out forwards;
+}
+
+    @keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+       }
+/* General Styles */
+ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        ul li {
+            display: inline-block;
+            position: relative;
+        }
+
+        ul li a {
+            display: block;
+            padding: 20px 25px;
+            color: #1b1816;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Stylish Dropdown Menu */
+        ul li a:hover {
+            color: white;  /* Change text color on hover */
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
+        }
+
+        ul li ul.dropdown {
+            width: 100%;  /* Make the dropdown width same as the header */
+            background: #444;  /* Dark background for dropdown */
+            position: absolute;
+            display: none;
+            left: 0; 
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);  
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s ease-in-out; /* Smooth dropdown transition */
+        }
+
+        /* Show dropdown on hover */
+        ul li:hover .dropdown {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        ul li ul.dropdown li {
+            display: block;
+        }
+
+        /* Styling for dropdown items */
+        ul li ul.dropdown li a {
+            padding: 15px;
+            color: #ddd;
+            font-weight: normal;
+            background-color: #444;  /* Darker background for each dropdown item */
+            transition: background-color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        ul li ul.dropdown li a:hover {
+            padding-left: 20px;  
+            color: white;  /* Change text color on hover */
+            background-color: #383434; 
+        }
+
+        /* Make sure the header is fixed and above content */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: transparent;
+            padding: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            height: 120px;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: top 0.3s; /* For smooth hiding */
+        }
+/* Add margin below header to push the tabs down */
+.tabs-container {
+    flex: 1; /* Fill remaining space */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    text-align: center; /* Align text */
+    margin-top: 120px; /* Space for fixed header */
+    }
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: transparent;
+  background-color: transparent;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border:1px solid;
+  border-radius: 20px;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+  margin: 0 6px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #e4e1e0; 
+    color: #000000;
+    border-color: #444343;
+}
+.artist-title {
+    margin-top: 130px; /* Ruang cukup untuk header */
+    text-align: center; /* Pusatkan teks */
+    font-size: 36px; /* Saiz tulisan */
+    font-weight: bold;
+    color: rgb(22, 22, 22); /* Warna teks */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Tambah efek shadow */
+}
+
+ /* General Styles */
+ .row {
+            display: flex; /* Use flexbox for layout */
+            flex-wrap: wrap; /* Allow wrapping for responsive design */
+            padding: 0;
+            margin: 0;
+            margin-top: 30px;
+        }
+
+        .column {
+            flex: 25%; /* Each column takes up 25% of the row */
+            max-width: 25%; /* Limit maximum width to 25% */
+            padding: 4px; /* Add small padding between columns */
+            box-sizing: border-box; /* Ensure padding does not add to width */
+        }
+
+        .column img {
+            margin-top: 8px;
+            vertical-align: middle;
+            width: 100%;
+            border-radius: 5px; /* Add slight rounding to images */
+            box-shadow: 0 4px 8px rgba(27, 23, 23, 0.836);
+            border: 1px solid #ddd
+        }
+
+        /* Responsive layout - 2 columns for medium screens */
+        @media screen and (max-width: 800px) {
+            .column {
+                flex: 50%;
+                max-width: 50%;
+            }
+        }
+
+        /* Responsive layout - 1 column for small screens */
+        @media screen and (max-width: 600px) {
+            .column {
+                flex: 100%;
+                max-width: 100%;
+            }
+        }
+        .scroll-container {
+    display: flex;
+    flex-wrap: nowrap; /* Jangan wrap gambar, biarkan dia berbaris satu je */
+    overflow-x: auto; /* Benarkan scroll horizontal */
+    gap: 20px; /* Jarak antara card */
+    padding: 10px 0; /* Padding atas dan bawah untuk elakkan gambar rapat sangat dengan tepi */
+}
+
+.news {
+    background-color:transparent;
+    text-align: center;
+}
+.card {
+    width: 600px; /* Lebar setiap card */
+    background-color: #fff; /* Warna latar belakang card */
+    border-radius: 8px; /* Sisi sedikit bulat */
+    overflow: hidden; /* Pastikan gambar tak keluar daripada card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bayang untuk card */
+    transition: transform 0.3s ease; /* Animasi apabila hover */
+    object-fit: cover;
+}
+
+.card:hover {
+    transform: scale(1.05); /* Effect zoom apabila hover */
+}
+
+.card img {
+    width: 100%; /* Gambar penuh memenuhi card */
+    height: auto; /* Pastikan ketinggian gambar mengikut skala */
+}
+
+.card-title {
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+    padding: 10px;
+    background-color: transparent; /* Latar belakang untuk tajuk */
+    border-top: 1px solid #ddd; /* Garisan pemisah antara gambar dan tajuk */
+}
+footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 40px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        footer a {
+            color: #f0a500;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+</style>
+</head>
+<body>
+    <header id="header"> 
+        <a href="home.html" class="logo"> 
+            <img src="logo WURS 1.png" alt="Logo" style="height: 100px; vertical-align: middle;"> 
+        </a> 
+        <ul> 
+            <li><a href="home.html">HOME</a></li> 
+            <li> 
+                <a href="artist.html">ARTIST</a> 
+                <ul class="dropdown"> 
+                    <li><a href="idol.html">IDOL</a></li> 
+                    <li><a href="actor.html">ACTOR</a></li> 
+                </ul> 
+            </li> 
+            <li><a href="content.html">CONTENT</a> 
+                <ul class="dropdown"> 
+                    <li><a href="drama.html">DRAMA</a></li> 
+                    <li><a href="varietyshow.html">VARIETY SHOW</a></li> 
+                </ul> 
+            </li> 
+            <li><a href="audition.html">AUDITION</a></li> 
+            <li><a href="contactus.html">CONTACT US</a></li> 
+        </ul>
+        </header>
+    
+        <h1 class="artist-title">ARTIST</h1>
+          <div class="row"> 
+            <div class="column">
+              <a href= "aespa3.jpg"><img src="aespa3.jpg" style="width:100%"></a>
+              <a href= "bailu2.jpg"><img src="bailu2.jpg" style="width:100%"></a>
+              <a href= "nct2.jpg"><img src="nct2.jpg" style="width:100%"></a>
+              <a href= "bus.jpg"><img src="bus.jpg" style="width:100%"></a>
+              <a href= "byeonwooseok.jpg"><img src="byeonwooseok.jpg" style="width:100%"></a>
+              <a href= "chaesoobin.jpg"><img src="chaesoobin.jpg" style="width:100%"></a>
+              <a href= "INTO1.jpeg"><img src="INTO1.jpeg" style="width:100%"></a>
+            </div>
+            <div class="column">
+              <a href= "darrenwang.jpg"><img src="darrenwang.jpg" style="width:100%"></a>
+              <a href= "dilraba.jpg"><img src="dilraba.jpg" style="width:100%"></a>
+              <a href= "dylanwang.jpg"><img src="dylanwang.jpg" style="width:100%"></a>
+              <a href= "blackpink2.jpeg"><img src="blackpink2.jpeg" style="width:100%"></a>
+              <a href= "iu.jpg"><img src="iu.jpg" style="width:100%"></a>
+              <a href= "yiran2.jpg"><img src="yiran2.jpg" style="width:100%"></a>
+            </div>
+            <div class="column">
+              <a href= "jamesjirayu.jpg"><img src="jamesjirayu.jpg" style="width:100%"></a>
+              <a href= "jeffsatur.jpg"><img src="jeffsatur.jpg" style="width:100%"></a>
+              <a href= "kimjiwon.jpg"><img src="kimjiwon.jpg" style="width:100%"></a>
+              <a href= "kimmykimberley.jpg"><img src="kimmykimberley.jpg" style="width:100%"></a>
+              <a href= "kimsoohyun.jpg"><img src="kimsoohyun.jpg" style="width:100%"></a>
+              <a href= "lykn.jpg"><img src="lykn.jpg"" style="width:100%"></a>
+            </div>
+            <div class="column">
+              <a href= "markprin.jpg"><img src="markprin.jpg" style="width:100%"></a>
+              <a href= "exo.jpg"><img src="exo.jpg" style="width:100%"></a>
+              <a href= "R1SE.jpg"><img src="R1SE.jpg" style="width:100%"></a>
+              <a href= "theboyz.jpg"><img src="theboyz.jpg" style="width:100%"></a>
+              <a href= "urassaya.jpg"><img src="urassaya.jpg" style="width:100%"></a>
+              <a href= "winmetawin2.jpeg"><img src="winmetawin2.jpeg" style="width:100%"></a>
+             
+            </div>
+          </div><br><br>    
+          <div class="news">
+            <h2><span style="background-color: #bcb7c8; border-radius: 5px;">Latest News</span></h2>
+          <div class="scroll-container">
+            <div class="card">
+                <a href="https://www.soompi.com/article/1718816wpp/blackpinks-jennie-announces-new-single-with-1st-teaser-for-love-hangover" target="_blank">
+                    <img src="https://6.soompi.io/wp-content/uploads/image/20250126151137_Jennie_7bfc0a.jpg?s=900x600&e=t" alt="Jennie Teaser" >
+                </a>
+                <div class="card-title">BLACKPINK's Jennie Announces New Single With 1st Teaser For "Love Hangover"</div>
+            </div>
+        
+            <div class="card">
+                <a href="https://www.nme.com/news/music/nct-127-2025-neo-city-the-momentum-world-tour-dates-3809520" target="_blank">
+                <img src="https://www.nme.com/wp-content/uploads/2024/11/nct-127-2025-tour-051124-1392x885.jpg" alt="NCT 127 Tour" width="auto" height="400"></a>
+                <div class="card-title">NCT 127 announce 2025 ‘Neo City – The Momentum’ world tour</div>
+            </div>
+        
+            <div class="card">
+                <a href="https://www.nationthailand.com/life/entertainment/40045376" target="_blank">
+                <img src="https://media.nationthailand.com/uploads/images/contents/w1024/2025/01/jU5i6F1yT6atQp0JKxc2.webp?x-image-process=style/lg-webp" alt="Northern Lights" width="auto" height="400"></a>
+                <div class="card-title">The parade, marking the arrival of the Year of the Snake, will feature 55 performance groups from 14 countries</div>
+            </div>
+        
+            <div class="card">
+                <a href="https://me.mashable.com/entertainment/51858/byeon-woo-seok-cant-wait-to-act-with-iu-in-wife-of-a-21st-century-prince-i-had-a-cameo-in" target="_blank">
+                <img src="https://sm.mashable.com/t/mashable_me/photo/default/byeon-woo-seok-and-iu_w5az.1248.jpg" alt="Byeon Woo Seok and IU" width="auto" height="400"></a>
+                <div class="card-title">Byeon Woo-seok can't wait to act with IU in 'Wife of a 21st Century Prince': 'I had a cameo in...'</div>
+            </div>
+        
+            <div class="card">
+                <a href="https://dramapanda.com/2025/01/generation-to-generation-zhou-yiran-bao-shangen-wuxia-romance.html" target="_blank">
+                <img src="https://dramapanda.com/wp-content/uploads/2025/01/Generation-Fi-640x457.jpg" alt="Generation Fi" width="auto" height="400"></a>
+                <div class="card-title">Generation to Generation Features Zhou Yiran and Bao Shangen in Wuxia Romance Adaptation</div>
+            </div>
+        </div>
+        </div>
+
+        <script>
+            let lastScrollTop = 0;
+            const header = document.getElementById("header");
+        
+            window.addEventListener("scroll", function() {
+                let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (currentScroll > lastScrollTop) {
+                    // Scrolling down
+                    header.style.top = "-100px";  // Hide header when scrolling down
+                } else {
+                    // Scrolling up
+                    header.style.top = "0";  // Show header when scrolling up
+                }
+                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Prevent negative values
+            });
+        </script>
+          
+          <footer>
+            <p style="font-family: 'Times New Roman', Times, serif;">&copy; 2025 WURS Entertainment. All Rights Reserved.</p>
+            <p style="font-family: 'Times New Roman', Times, serif;">Follow us on 
+                <a href="https://www.instagram.com/wurs_official" target="_blank">Instagram</a>, 
+                <a href="https://youtube.com/@wurs25?si=yTaeZYSKQ9SRFOEf" target="_blank">Youtube</a>, 
+                <a href="https://www.tiktok.com/@wurs_official?_t=ZS-8tPW5cofwqw&_r=1" target="_blank">Tiktok</a>
+            </p>
+        </footer>
+</body>
+</html>

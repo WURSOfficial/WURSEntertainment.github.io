@@ -1,0 +1,356 @@
+<html>
+<head>
+  <link rel="icon" href="iconlogo1.jpg" type="image/gif" size="16x16">
+    <title>Audition</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+<link href="home.html">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(#bcb7c8, #2c2a2c);
+  }
+
+  ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        ul li {
+            display: inline-block;
+            position: relative;
+        }
+
+        ul li a {
+            display: block;
+            padding: 20px 25px;
+            color: #1b1816;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+
+        ul li a:hover {
+            color: white;  
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        ul li ul.dropdown {
+            width: 100%;  
+            background: #333;  
+            position: absolute;
+            display: none;
+            left: 0;  
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);  
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s ease-in-out; 
+        }
+
+        ul li:hover .dropdown {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        ul li ul.dropdown li {
+            display: block;
+        }
+
+        ul li ul.dropdown li a {
+            padding: 15px;
+            color: #ddd;
+            font-weight: normal;
+            background-color: #444;  
+            transition: background-color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        ul li ul.dropdown li a:hover {
+            padding-left: 20px; 
+            color: white;  
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: transparent;
+            padding: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            border-radius: 5px;
+            transition: top 0.3s; 
+        }
+
+        header .logo img {
+            height: 100px;
+        }
+
+
+  .logo {
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    font-style: italic;
+  }
+
+  .image {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+  }
+
+  .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+  }
+
+  .registration-container {
+    background: rgba(0, 0, 0, 0.6) url('background-image.jpg') no-repeat center center;
+    background-size: cover;
+    padding: 40px;
+    width: 70%;
+    margin: 100px auto 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+  .registration-container h2 {
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #fff;
+    text-transform: uppercase;
+  }
+
+  .registration-container form input,
+  .registration-container form select,
+  .registration-container form button {
+    width: 100%;
+    padding: 15px;
+    margin: 15px 0;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+
+  .registration-container form button {
+    background-color: #2c2a2c;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .registration-container form button:hover {
+    background-color: #444242;
+  }
+
+  .input-container {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    text-align: left;
+  }
+
+  .input-container input,
+  .input-container select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  .input-container label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #181818;
+  }
+
+  .input-container input[type="radio"],
+  .input-container input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+  }
+ 
+
+  .thank-you-message {
+    display: none;
+    font-size: 20px;
+    color: white;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 20px;
+    transition: opacity 0.5s ease;
+}
+
+.thank-you-message.show {
+    display: block;
+    opacity: 1;
+}
+
+footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 40px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        footer a {
+            color: #f0a500;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+</style>
+</head>
+
+<body>
+
+  <header id="header" id="top">
+    <a href="home.html" class="logo">
+        <img src="logo WURS 1.png" alt="Logo" style="height: 100px; vertical-align: middle;">
+    </a>
+    <ul>
+        <li><a href="home.html">HOME</a></li>
+        <li>
+            <a href="artist.html">ARTIST</a>
+            <ul class="dropdown">
+                <li><a href="idol.html">IDOL</a></li>
+                <li><a href="actor.html">ACTOR</a></li>
+            </ul>
+        </li>
+        <li><a href="content.html">CONTENT</a>
+            <ul class="dropdown">
+                <li><a href="drama.html">DRAMA</a></li>
+                <li><a href="varietyshow.html">VAIRETY SHOW</a></li>
+            </ul>
+        </li>
+        <li><a href="audition.html">AUDITION</a></li>
+        <li><a href="contactus.html">CONTACT US</a></li>
+    </ul>    
+</header>
+
+<div class="image">
+    <img src="ent2.png" alt="Entertainment">
+</div>
+
+<div class="registration-container">
+    <h2>Register for Audition</h2>
+    <form action="https://api.web3forms.com/submit" method="POST" class="registration-form">
+    <form id="registration-form">
+        <input type="hidden" name="access_key" value="893f6362-ac33-4ee8-a22b-a82d1bb62249">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="number" name="age" placeholder="Age" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="tel" name="phone" placeholder="Phone Number" required>
+        
+        <div class="input-container">
+            <label>Gender:</label>
+            <input type="radio" name="gender" value="male" id="male"> Male
+            <input type="radio" name="gender" value="female" id="female"> Female
+        </div>
+
+        <div class="input-container">
+            <label>Education Level:</label>
+            <input type="checkbox" name="diploma" value="yes">Diploma
+            <input type="checkbox" name="degree" value="yes">Bachelor
+            <input type="checkbox" name="masters" value="yes">Masters
+            <input type="checkbox" name="phd" value="yes">PHD
+        </div>
+
+        <div class="input-container">
+            <label>Location: </label>
+            <select name="location">
+              <option value="United States">United States</option>
+              <option value="England">England</option>
+              <option value="India">India</option>
+              <option value="Vietnam">Vietnam</option>
+              <option value="China">China</option>
+              <option value="South Korea">South Korea</option>
+              <option value="Malaysia">Malaysia</option>
+              <option value="Arab">Arab</option>
+              <option value="Thailand">Thailand</option>
+              <option value="Singapore">Singapore</option>
+              <option value="Australia">Australia</option>
+              <option value="Canada">Canada</option>
+              <option value="Germany">Germany</option>
+              <option value="Japan">Japan</option>
+              <option value="France">France</option>
+              <option value="Italy">Italy</option>
+              <option value="Russia">Russia</option>
+              <option value="Brazil">Brazil</option>
+              <option value="Mexico">Mexico</option>
+              <option value="South Africa">South Africa</option>
+              
+            </select>
+        </div>
+
+        <div class="input-container">
+          <label>Specialty:</label>
+          <input type="checkbox" name="singing" value="yes">SING
+          <input type="checkbox" name="dancing" value="yes">DANCE
+          <input type="checkbox" name="rapping" value="yes">RAP
+          <input type="checkbox" name="acting" value="yes">ACTING
+          <input type="checkbox" name="instrument" value="yes">INSTRUMENT
+      </div>
+
+        <button type="submit">Register Now</button>
+    </form>
+
+<div class="thank-you-message" id="thank-you-message">
+        Thank you for submitting your registration! We will let you know once your application is accepted! ^^
+    </div>
+</div>
+
+<script>
+ document.getElementById("registration-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    document.getElementById("thank-you-message").classList.add("show");
+    this.style.display = "none";
+});
+</script>
+
+<footer>
+  <p style="font-family: 'Times New Roman', Times, serif;">&copy; 2025 WURS Entertainment. All Rights Reserved.</p>
+  <p style="font-family: 'Times New Roman', Times, serif;">Follow us on 
+      <a href="https://www.instagram.com/wurs_official" target="_blank">Instagram</a>, 
+      <a href="https://youtube.com/@wurs25?si=yTaeZYSKQ9SRFOEf" target="_blank">Youtube</a>, 
+      <a href="https://www.tiktok.com/@wurs_official?_t=ZS-8tPW5cofwqw&_r=1" target="_blank">Tiktok</a>
+  </p>
+</footer>
+
+
+</body>
+</html>

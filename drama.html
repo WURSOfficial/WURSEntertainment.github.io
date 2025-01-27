@@ -1,0 +1,651 @@
+<html>
+<head>
+    <link rel="icon" href="iconlogo1.jpg" type="image/gif" size="16x16">
+    <title>Our Content</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        ul li {
+            display: inline-block;
+            position: relative;
+        }
+
+        ul li a {
+            display: block;
+            padding: 20px 25px;
+            color: #1b1816;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+
+        ul li a:hover {
+            color: white;  
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);  
+        }
+
+        ul li ul.dropdown {
+            width: 100%; 
+            background: #333;  
+            position: absolute;
+            display: none;
+            left: 0;  
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);  
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s ease-in-out; 
+        }
+
+        ul li:hover .dropdown {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        ul li ul.dropdown li {
+            display: block;
+        }
+
+        ul li ul.dropdown li a {
+            padding: 15px;
+            color: #ddd;
+            font-weight: normal;
+            background-color: #444;  
+            transition: background-color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        ul li ul.dropdown li a:hover {
+            padding-left: 20px;  
+            color: white;  
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: transparent;
+            padding: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            border-radius: 5px;
+            transition: top 0.3s; 
+        }
+
+        header .logo img {
+            height: 100px;
+        }
+
+        .content-box {
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 1300px;
+            margin: 120px auto 40px auto;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .content-box h1 {
+            font-size: 30px;
+            font-family: 'Times New Roman', Times, serif;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .gallery-container {
+            width: 100%;
+            overflow-y: auto; 
+            max-height: 800px; 
+            display: flex;
+            flex-direction: column;
+            gap: 30px; 
+        }
+
+        .gallery-item {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6); 
+            border-radius: 15px;
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px); 
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-item img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.05); 
+        }
+
+        .gallery-item .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+            text-align: left;
+            padding-left: 20px;
+            width: 100%;
+        }
+
+        .gallery-item .content h2 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: capitalize; 
+            color: #f0a500;
+        }
+
+        .gallery-item .content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+
+        .gallery-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .gallery-container::-webkit-scrollbar-thumb {
+            background-color: #464646;
+            border-radius: 10px;
+        }
+
+        .gallery-container::-webkit-scrollbar-thumb:hover {
+            background-color: #464646;
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 40px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        footer a {
+            color: #f0a500;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .country-tabs {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .country-tab {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 15px 30px;
+            margin: 0 10px;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            text-align: center;
+        }
+
+        .country-tab:hover {
+            background-color: #f0a500;
+            transform: scale(1.1);
+        }
+
+        .country-tab.active {
+            background-color: #f0a500;
+            color: #fff;
+        }
+
+        .country-content {
+            display: none;
+        }
+
+        .country-content.active {
+            display: block;
+        }
+
+    </style>
+</head>
+
+<body style="background-image: linear-gradient(#bcb7c8, #2c2a2c);">
+
+    <header id="header" id="top">
+        <a href="home.html" class="logo">
+            <img src="logo WURS 1.png" alt="Logo" style="height: 100px; vertical-align: middle;">
+        </a>
+        <ul>
+            <li><a href="home.html">HOME</a></li>
+            <li>
+                <a href="artist.html">ARTIST</a>
+                <ul class="dropdown">
+                    <li><a href="idol.html">IDOL</a></li>
+                    <li><a href="actor.html">ACTOR</a></li>
+                </ul>
+            </li>
+            <li><a href="content.html">CONTENT</a>
+                <ul class="dropdown">
+                    <li><a href="drama.html">DRAMA</a></li>
+                    <li><a href="varietyshow.html">VAIRETY SHOW</a></li>
+                </ul>
+            </li>
+            <li><a href="audition.html">AUDITION</a></li>
+            <li><a href="contactus.html">CONTACT US</a></li>
+        </ul>    
+    </header>
+
+    <div class="content-box">
+        <h1><i>Drama</i></h1>
+
+        <div class="country-tabs">
+            <div class="country-tab active" id="koreaTab">Korea</div>
+            <div class="country-tab" id="chinaTab">China</div>
+            <div class="country-tab" id="thailandTab">Thailand</div>
+        </div>
+
+        <div class="country-content active" id="koreaContent">
+            <h2>Korean Drama</h2>
+            <p>Korean dramas are known for their compelling storylines, emotional depth, and strong character development. They often blend romance, comedy, suspense, and sometimes fantasy or historical elements. K-dramas typically have a fixed number of episodes and have gained international fame for their high production value and engaging plots.</p>
+               <div class="gallery-container">
+
+                <div class="gallery-item">
+                    <a href="https://www.youtube.com/watch?v=Y2oxBSp3pf8&pp=ygUVcXVlZW4gb2YgdGVhcnMgdGVhc2Vy" target="_blank">
+                        <img src="qot.jpg" alt="Queen of Tears">
+                    </a>
+                    <div class="content">
+                        <h2>Queen of Tears (눈물의 여왕)</h2>
+                        <p>The series has generated considerable buzz due to its star-studded cast, strong narrative, and emotional depth. It is a drama that explores the personal and political struggles of a queen and the relationships that shape her destiny.</p>
+                        <p>Total Episodes: 16 Episodes</p>
+                        <p>Genres: Romance, Drama, Family, Office, Comedy</p>
+                        
+                    </div>
+                </div>
+    
+                <div class="gallery-item">
+                    <a href="https://youtu.be/5kk0dYa8Ccc" target="_blank">
+                        <img src="lovelyrunner.jpg" alt="Lovely Runner">
+                    </a>
+                    <div class="content">
+                        <h2>Lovely Runner (러블리 러너)</h2>
+                        <p>The series is anticipated to appeal to viewers who enjoy energetic, lighthearted stories with a mix of youthful romance and athletic competition.</p>
+                        <p>Total Episodes: 16 Episodes</p>
+                        <p>Genres: Fantasy, Romance, Comedy</p>
+                    </div>
+                </div>
+    
+                <div class="gallery-item">
+                    <a href="https://youtu.be/zMWpcJ_n3_o" target="_blank">
+                        <img src="hoteldelluna.jpg" alt="Hotel Del Luna">
+                    </a>
+                    <div class="content">
+                        <h2>Hotel Del Luna (호텔 델 루나)</h2>
+                        <p>The series has a supernatural premise, revolving around a mysterious hotel for spirits, where a cursed manager and a young hotel manager uncover deep secrets and form a poignant bond while helping souls move on.</p>
+                        <p>Total Episodes: 16 Episodes</p>
+                        <p>Genre: Supernatural, Fantasy, Romance, Drama</p>
+                    </div>
+                </div>
+    
+                <div class="gallery-item">
+                    <a href="https://youtu.be/KFS4_qevE7M">
+                        <img src="20centurygirl.jpg" alt="20th century girl">
+                    </a>
+                    <div class="content">
+                        <h2>20th Century Girl</h2>
+                        <p>The movie has told about a nostalgic coming-of-age story about a high school girl in 1999 who secretly observes her best friend’s crush, only to unexpectedly fall for the boy herself.</p>
+                        <p>Total Runtime of Movie: 1 hour 59 minutes</p>
+                        <p>Genre: Romance, Drama, Coming-of-age</p>
+                    </div>
+                </div>
+    
+                <div class="gallery-item">
+                    <a href="https://youtu.be/AyQVdUxCA9E" target="_blank">
+                        <img src="mylovefromstar.jpg" alt="my love from star">
+                    </a>
+                    <div class="content">
+                        <h2>My Love From the Star (별에서 온 그대)</h2>
+                        <p>The series has a unique romance between an alien who has lived on Earth for 400 years and a famous actress, as they navigate love, time, and the challenges of their very different worlds.</p>
+                        <p>Total Episodes: 21 Episodes</p>
+                        <p>Genre: Romance, Sci-Fi, Fantasy, Drama</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <a href="https://youtu.be/o7mYYXToqmw" target="_blank">
+                        <img src="moonlover.jpg" alt="Moon Lovers Scarlet Heart Ryeo">
+                    </a>
+                    <div class="content">
+                        <h2>Moon Lovers: Scarlet Heart Ryeo (달의 연인 - 보보경심 려)</h2>
+                        <p>The series has a gripping historical romance set in the Goryeo Dynasty, where a modern-day woman is transported back in time and becomes entangled in the fierce political battles and love interests of the royal family.</p>
+                        <p>Total Episodes: 20 Episodes</p>
+                        <p>Genre: Historical, Romance, Drama, Fantasy</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <a href="https://youtu.be/Y4P-z1Qy6xI" target="_blank">
+                        <img src="whenthephonering.jpg" alt="When The Phone Rings">
+                    </a>
+                    <div class="content">
+                        <h2>When the Phone Rings (전화가 올 때)</h2>
+                        <p>The series has a suspenseful and thrilling plot where a woman begins receiving mysterious phone calls that lead her into a web of secrets, danger, and unsettling truths.</p>
+                        <p>Total Episodes: 16 Episodes</p>
+                        <p>Genre: Thriller, Mystery, Drama</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <a href="https://youtu.be/krd1BojCrEk" target="_blank">
+                        <img src="fightformyway.jpg" alt="Fight For My Way">
+                    </a>
+                    <div class="content">
+                        <h2>Fight For My Way (쌈, 마이웨이)</h2>
+                        <p>The series has an inspiring story about four friends who struggle to achieve their dreams while dealing with love, friendship, and the challenges of adulthood.</p>
+                        <p>Total Episodes: 16 Episodes</p>
+                        <p>Genre: Romance, Comedy, Drama</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <a href="https://youtu.be/1H__LNPCc80" target="_blank">
+                        <img src="itsokaytonotbeokay.jpg" alt="Its Okay To Not Be Okay">
+                    </a>
+                    <div class="content">
+                        <h2>It's Okay to Not Be Okay (사이코지만 괜찮아)</h2>
+                        <p>The series has a deeply emotional and unique story about a psychiatric caregiver and a popular children's book author with emotional scars, as they help each other heal and confront their past traumas.</p>
+                        <p>Total Episodes: 16 Episodes</p>
+                        <p>Genre: Romance, Drama, Psychological, Fantasy</p>
+                    </div>
+                </div>
+
+    
+            </div> 
+            </div>
+    
+       
+        
+        <div class="country-content" id="chinaContent">
+            <h2>Chinese Drama</h2>
+            <p>Chinese dramas are diverse in genre, ranging from historical epics to modern romance and fantasy. They often feature complex narratives and rich cultural elements, with many C-dramas spanning a longer number of episodes compared to K-dramas. Popular themes include ancient Chinese history, wuxia (martial arts), and love stories.</p>
+                <div class="gallery-container">
+
+                    <div class="gallery-item">
+                        <a href="https://youtu.be/87Q8hTratnM" target="_blank">
+                            <img src="meteorgarden.jpeg" alt="Meteor Garden">
+                        </a>
+                        <div class="content">
+                            <h2>Meteor Garden (流星花园)</h2>
+                            <p>A heart-wrenching drama that keeps you on the edge of your seat. Watch now on YouTube.</p>
+                            <p>Total Episodes: 49 Episodes</p>
+                            <p>Genres: Romance, Drama, Comedy, Youth, School</p>
+                        </div>
+                    </div>
+        
+                    <div class="gallery-item">
+                        <a href="https://youtu.be/61pxwxsLT6s" target="_blank">
+                            <img src="lovebetweenfairyanddevil.jpg" alt="Love Between Fairy And Devil">
+                        </a>
+                        <div class="content">
+                            <h2>Love Between Fairy and Devil (苍兰诀)</h2>
+                            <p>The series has a captivating romance set in a mystical world where a fairy and a powerful devil fall in love despite their opposing worlds, facing trials and conflicts that test their love and destiny.</p>
+                            <p>Total Episodes: 36 Episodes</p>
+                            <p>Genre: Fantasy, Romance, Drama</p>
+                        </div>
+                    </div>
+        
+                    <div class="gallery-item">
+                        <a href="https://youtu.be/Kg-mW8SyNVg" target="_blank">
+                            <img src="ourtime.jpg" alt="Our Time">
+                        </a>
+                        <div class="content">
+                            <h2>Our Time (我们的时光)</h2>
+                            <p>The movie has a heartfelt story about two individuals who experience love and heartbreak as they navigate the complexities of their personal lives and relationships over time.Discover the artistry of the production process.</p>
+                            <p>Total Runtime OF Movie: 1 hour 45 minutes</p>
+                            <p>Genre: Romance, Drama</p>
+                        </div>
+                    </div>
+        
+                    <div class="gallery-item">
+                        <a href="https://youtu.be/23PlXDnakJM" target="_blank">
+                            <img src="youaremyglory.jpg" alt="Your Are My Glory">
+                        </a>
+                        <div class="content">
+                            <h2>You Are My Glory (你是我的荣耀)</h2>
+                            <p>The series has a sweet and inspiring romance between a former high school couple who reconnect years later, navigating their careers and love for each other while facing challenges in the world of esports and acting.</p>
+                            <p>Total Episodes: 32 Episodes</p>
+                            <p>Genre: Romance, Drama</p>
+                        </div>
+                    </div>
+        
+                    <div class="gallery-item">
+                        <a href="https://youtu.be/vPspURlj8n0" target="_blank">
+                            <img src="sweetdream.jpg" alt="Sweet Dream">
+                        </a>
+                        <div class="content">
+                            <h2>Sweet Dream (甜梦)</h2>
+                            <p>The series has a dreamy and heartwarming romance between a woman who can enter people's dreams and a man who is haunted by his past, as they slowly uncover love, healing, and the secrets of their intertwined fates.</p>
+                            <p>Total Episodes: 36 Episodes</p>
+                            <p>Genre: Romance, Fantasy, Drama</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <a href="https://youtu.be/jryg9juelEw" target="_blank">
+                            <img src="tilltheendofthemoon.jpg" alt="Till The End Of The Moon">
+                        </a>
+                        <div class="content">
+                            <h2>Till The End Of The Moon (月行千里)</h2>
+                            <p>The series has an epic romance and adventure between a princess who travels back in time to stop a tyrant’s rise to power, only to fall in love with the very man she is destined to defeat.</p>
+                            <p>Total Episodes: 40 Episodes</p>
+                            <p>Genre: Fantasy, Romance, Historical, Drama</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <a href="https://youtu.be/9gKs1BPFQrs" target="_blank">
+                            <img src="thelegends.jpg" alt="The Legends">
+                        </a>
+                        <div class="content">
+                            <h2>The Legends (传奇)</h2>
+                            <p>The series has an adventurous and romantic journey of a young woman who discovers her powers and navigates through betrayal, love, and political intrigue in a world filled with ancient secrets.</p>
+                            <p>Total Episodes: 48 Episodes</p>
+                            <p>enre: Fantasy, Romance, Historical, Drama</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <a href="https://youtu.be/gtXj5fhacUw" target="_blank">
+                            <img src="wheniflytowardyou.jpg" alt="When I Fly Toward You">
+                        </a>
+                        <div class="content">
+                            <h2>When I Fly Toward You (当我飞向你)</h2>
+                            <p>The series has a tender and heartwarming story about two young individuals who, despite their differences, find love and personal growth as they face challenges in their academic and personal lives.</p>
+                            <p>Total Episodes: 24 Episodes</p>
+                            <p>Genre: Romance, Drama</p>
+                        </div>
+                    </div>
+        
+                </div> 
+                </div>
+       
+
+        <div class="country-content" id="thailandContent">
+            <h2>Thai Drama</h2>
+            <p>Thai dramas, also known as lakorns, are famous for their intense romantic plots, often with elements of drama, comedy, or even supernatural themes. They frequently depict emotional love triangles, family conflicts, and personal growth. Thai dramas also explore societal issues with a mix of humor and melodrama.</p>
+                <div class="gallery-container">
+
+                    <div class="gallery-item">
+                        <a href="https://youtu.be/jMVz85myWgA" target="_blank">
+                            <img src="eclipseheart.jpg" alt="Eclipse Of The Heart">
+                        </a>
+                        <div class="content">
+                            <h2>Eclipse of the Heart (แสงกระสือ)</h2>
+                            <p>The series has a gripping mix of romance and supernatural elements, where a young woman struggles with her mysterious past and the dark secrets surrounding her love life.</p>
+                            <p>Total Episodes: 16 Episodes</p>
+                            <p>Genre: Romance, Drama, Supernatural</p>
+                        </div>
+                    </div>
+        
+                    <div class="gallery-item">
+                        <a href="https://youtu.be/mJlkX-ytGhg" target="_blank">
+                            <img src="gameofoutlaws.jpg" alt="Game Of Outlaws">
+                        </a>
+                        <div class="content">
+                            <h2>Game of Outlaws (เกมทหาร)</h2>
+                            <p>The series has an intense and thrilling plot about a group of outlaws who challenge the system, facing dangerous enemies and moral dilemmas as they navigate loyalty, betrayal, and revenge.</p>
+                            <p>Total Episodes: 24 Episodes</p>
+                            <p>Genre: Action, Drama, Historical, Crime</p>
+                        </div>
+                    </div>
+        
+                    <div class="gallery-item">
+                        <a href="https://youtu.be/hkxRoEVTiWM" target="_blank">
+                            <img src="thecrownprincess.jpg" alt="The Crown Princess">
+                        </a>
+                        <div class="content">
+                            <h2>The Crown Princess (เจ้าหญิงจอมทัพ)</h2>
+                            <p>The series has a passionate and dramatic romance between a crown princess and a soldier, as they are forced into a relationship full of danger, royal duties, and political intrigue.</p>
+                            <p>Total Episodes: 12 Episodes</p>
+                            <p>Genre: Romance, Drama</p>
+                        </div>
+                    </div>
+        
+                    <div class="gallery-item">
+                        <a href="https://youtu.be/1noYhhEBeD4" target="_blank">
+                            <img src="mycherieamour.jpg" alt="My Cherie Amour">
+                        </a>
+                        <div class="content">
+                            <h2>My Cherie Amour (มาย เชอรี่ อามัวร์)</h2>
+                            <p>The series has a heartfelt and romantic story about a man who falls in love with a woman despite the barriers of time, distance, and emotional scars, as they navigate the complexities of love and loss.</p>
+                            <p>Total Episodes: 12 Episodes</p>
+                            <p>Genre: Romance, Drama</p>
+                        </div>
+                    </div>
+        
+                    <div class="gallery-item">
+                        <a href="https://youtu.be/WVkJboz3O8c" target="_blank">
+                            <img src="tothemoonandback.jpeg" alt="To The Moon And Back">
+                        </a>
+                        <div class="content">
+                            <h2>To The Moon and Back (ถึงเดือนนั้นไป)</h2>
+                            <p>The series has a heartwarming and bittersweet romance that explores the journey of two individuals as they face life’s challenges, learn about each other, and fall in love despite their differences.</p>
+                            <p>Total Episodes: 16 Episodes</p>
+                            <p>Genre: Romance, Drama</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <a href="https://youtu.be/rIY7f1BiQtc" target="_blank">
+                            <img src="wednesdayclub.png" alt="Wednesday Club">
+                        </a>
+                        <div class="content">
+                            <h2>Wednesday Club (คลับวันพุธ)</h2>
+                            <p>The series has a light-hearted and humorous storyline about a group of friends who meet every Wednesday to discuss their lives, relationships, and the ups and downs of adulthood.</p>
+                            <P>Total Episodes: 12 Episodes</P>
+                            <p>Genre: Comedy, Drama, Friendship</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <a href="https://youtu.be/q_G4C9Jex1M" target="_blank">
+                            <img src="royaldoctor.jpeg" alt="Royal Doctor">
+                        </a>
+                        <div class="content">
+                            <h2>Royal Doctor (หมอหลวง)</h2>
+                            <p>The series has a captivating story about a skilled doctor who becomes involved in the royal court, navigating intrigue, love, and political schemes while treating the kingdom’s most important figures.</p>
+                            <p>Total Episodes: 12 Episodes</p>
+                            <p>Genre: Historical, Romance, Drama</p>
+                        </div>
+                    </div>
+        
+                </div> 
+            </div>
+
+        </div>
+        </div>
+
+        
+
+
+    <footer>
+        <p>&copy; 2025 WURS Entertainment. All Rights Reserved.</p>
+        <p>Follow us on 
+            <a href="https://www.instagram.com/wurs_official" target="_blank">Instagram</a>, 
+            <a href="https://youtube.com/@wurs25?si=yTaeZYSKQ9SRFOEf" target="_blank">Youtube</a>, 
+            <a href="https://www.tiktok.com/@wurs_official?_t=ZS-8tPW5cofwqw&_r=1" target="_blank">Tiktok</a>
+        </p>
+    </footer>
+
+    <script>
+            let lastScrollTop = 0;
+    const header = document.getElementById("header");
+
+    window.addEventListener("scroll", function() {
+        let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (currentScroll > lastScrollTop) {
+            header.style.top = "-100px";  
+        } else {
+            header.style.top = "0";  
+        }
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; 
+    });
+        
+        const koreaTab = document.getElementById('koreaTab');
+        const chinaTab = document.getElementById('chinaTab');
+        const thailandTab = document.getElementById('thailandTab');
+        
+        const koreaContent = document.getElementById('koreaContent');
+        const chinaContent = document.getElementById('chinaContent');
+        const thailandContent = document.getElementById('thailandContent');
+
+        function switchTab(tab, content) {
+            document.querySelectorAll('.country-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.country-content').forEach(content => content.classList.remove('active'));
+            
+            tab.classList.add('active');
+            content.classList.add('active');
+        }
+
+        koreaTab.addEventListener('click', () => switchTab(koreaTab, koreaContent));
+        chinaTab.addEventListener('click', () => switchTab(chinaTab, chinaContent));
+        thailandTab.addEventListener('click', () => switchTab(thailandTab, thailandContent));
+    </script>
+
+</body>
+</html>
